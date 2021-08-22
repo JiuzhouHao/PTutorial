@@ -1,0 +1,24 @@
+Command Line Interface Challenge
+
+Q1: How do I create a hidden file or folder? How do I display it in the CLI?
+A: add a dot (.) before the directory/file name you are creating, i.e.,
+touch .filename.*
+mkdir .directoryname
+
+To display it in the CLI, use the parameter -a (could cobine with l to see details).
+
+To make them unhidden, simply rename them from .filename.* to filename.*
+
+Q2: How do I create multiple nested directories, like /c/Users/myusername/these/folders/are/just/for/fun?
+A: use the -p option which stands for parent, i.e., mkdir -p xx/xx/xx
+
+to remove a nested directory: remove the parent: rm -r parent path name
+
+to remove certain but not all files within one directory, rm -f {a, b, c} or directories rm -r {a, b, c}
+
+Q3: How do I append a message to a file, without a newline character, so the output would be:
+first message
+second message
+
+A: echo -n "text" >> filename.txt
+

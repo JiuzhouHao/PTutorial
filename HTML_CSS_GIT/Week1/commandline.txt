@@ -1,0 +1,114 @@
+(1) listing files:
+ls (command) and you could add parameters after -, e.g., 
+l for detailed listing;
+t for sorting by time;
+S for sorting by file size;
+r for reverse the sorting;
+a for hidden files.
+Note that you could combine the parameters, e.g., 
+-lSr for reversed detailed listing sorted by file  size.
+
+The outcome may contain "." and ".." 
+respectively represent the current folder and the parent folder. 
+and you can use ./.. as command arguments to represent folders. 
+For example, with the command (2).
+
+(2) changing directories:
+cd (command), this command take both relative and full paths as arguments:
+a. under your current working directory (pwd: the command for print working directory):
+cd .. for switching to the parent directory (above the current pwd);
+cd name_of_the_directory for switching to the directory within the current pwd.
+b. using a full path (absolute path):
+cd "another/path" note the "" is optional if no spaces are in-between the names.
+c. to swap directories to the previous one:
+cd - (hyphen)
+
+short cuts: 
+To navigate into the root directory, use "cd /"
+To navigate to your home directory, use "cd" or "cd ~"
+To navigate up one directory level, use "cd .."
+To navigate to the previous directory (or back), use "cd -"
+
+(3) creating or removing folders:
+a. create a folder: mkdir <foldername> (make directory)
+b. remove a folder (when it is empty): rmdir <foldername>
+
+(4) creating or removing files:
+a. create a file: touch <filename>
+b. remove a file: rm <filename>
+Note that you could apply regular expressions here that * (asterisk) could be used to say
+I wanna delete all the files (within a pwd): rm *
+#The wildcard could also be used in combination with parameters to do recursive deletions:
+rm -rf filename.*. Here, the r is the option for recursive and the f is for force.
+This command will delete all files with the name <filename> regardless of its extension.
+Now think what will rm -rf module*.txt and rm -rf module*.* do respectively?
+
+(5) opening the plain text file and edit with visual studio code:
+code . (here the "." represents the current folder)
+or else you could directly specify the file and its directory:
+code /path/to/"the file"/
+
+(6) displaying file contents:
+cat <filename> is the basics but it will fly past the content.
+more <filename> or less <filename> is preferred for files with larger contents;
+however, I prefer more <> as it ends with a new line for command 
+whereas less <> needs to be quitted q (command)
+
+(7) redirecting commands (piping and saving outputs)
+a. piping with |, e.g., ls -l | more 
+will take the output of ls -l as the input for the more command
+b. saving with >, e.g., ls -l > filenames.txt
+will take the output of ls -l and save it into a txt file named filenames.
+c. appending with >>, e.g., echo "hello" >> filenames.txt
+
+You could further combine them, 
+e.g., ls -l > filenames.txt | more | grep keyword > filefound.txt | more
+
+(8) running a script (in the current folder)
+
+(bash) ./filename, note that bash command might be needed when you are in zsh shell 
+and ./ is necessary 
+
+(9) using history
+if you wanna reuse previous codes, you could use up and down errors to find them.
+Alternatively, use ctrl + R to search with keywords.
+
+(10) for loops 
+for f (this is a placeholder) in (optional pwd) *.txt (the thing you wanna loop); do echo $f; done
+
+(11) finding a text string in files (but this would be more intuitive with nltk)
+grep (could combine parameters) word/string file/directory 
+e.g., grep -ir i . will find instances of "i/I" in all the files in the current pwd 
+i parameter for case insensitive 
+r for recursive
+c for counting, 
+e.g., grep -c "I" filename.txt counts the occurrences of "I" in the file named filename.
+
+(12) finding files 
+find directory (combine with parameters)
+-name for name of the files
+-mtime modified time/date e.g.,
+find . -name "*.txt" -mtime 5 will find all txt files in the current pwd that have been 
+modified within the 5 days. 
+
+(13) renaming file one by one or in batch 
+a. one by one with mv:
+mv <oldfilename> <newfile name>
+b. in batch with rename:
+rename -v 's/abc/def/g' * 
+this will substitute filenames with abc to def
+
+(14) short cuts:
+Ctrl + U: Clears the line from the cursor point back to the beginning.
+Ctrl + A: Moves the cursor to the beginning of the line.
+Ctrl + E: Moves the cursor to the end of the line.
+Ctrl + R: Allows you to search through the previous commands.
+
+(15) using aliases
+if one command is long and you don't wanna type it every time,
+you could create an alias for it:
+if the command is abc def ghi and you could make an alias named lazy:
+alias lazy = 'abc def ghi'
+
+also, you could set the default parameter/arguement for a command with alias:
+alias ls = 'ls -l'
